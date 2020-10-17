@@ -4,6 +4,7 @@ include_once "../../application/RequestAPI.php";
 include_once "../../application/DataStream.php";
 
 $method = RequestAPI::getMethod();
+session_start();
 
 if($method == "POST") {
     if(isset($_POST['login']) && $_POST['password']){

@@ -11,7 +11,7 @@ include_once "../application/DataStream.php";
         session_destroy();
         header('Location: ../');
     }
-    if($method == "POST"){
+    if($method == "POST") {
         if(isset($_POST['program'])){
            $result = putCommand("UPDATE `users` SET `program` = :program WHERE `userId` = :userId",[
                "userId"=>$_SESSION['userId'],

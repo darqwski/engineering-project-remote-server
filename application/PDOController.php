@@ -18,9 +18,7 @@ function getCommand($command, $params = []){
     foreach ($params as $key=>$param){
         $paramsArray[":$key"] = $param;
     }
-
     $statement->execute($paramsArray);
-
     $data = $statement->fetchAll(PDO::FETCH_ASSOC);
 
     return $data;
@@ -34,11 +32,12 @@ function putCommand($command, $params = []){
         $paramsArray[":$key"] = $param;
     }
 
-    $statement->execute($paramsArray);
+    $result = $statement->execute($paramsArray);
     if($statement->errorInfo()[0] != '00000'){
         print_r($statement->errorInfo());
         return $statement->errorInfo();
     }
+    return $result;
 }
 
 function insertCommand($command,$params = []){
